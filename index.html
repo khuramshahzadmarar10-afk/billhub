@@ -60,10 +60,28 @@
     @media(max-width:620px){.wrap{width:min(100% - 22px,1160px)}.nav-links a{font-size:.8rem;padding:8px}.hero{padding:58px 0 50px}.hero h1{font-size:2.75rem}.hero-actions .btn{width:100%}.section{padding:56px 0}.section-head{display:block}.section-head p{margin-top:12px}.calc-tabs{grid-template-columns:1fr;padding:6px}.calc-tab{justify-content:flex-start}.calc-intro{display:block;padding:22px}.asof{display:inline-block;margin-top:12px}.form-side,.result-side{padding:22px}.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.info-grid,.link-grid,.tip-grid,.tools-grid,.payment-guide{grid-template-columns:1fr}.payment-guide{padding:22px}.footer-inner{display:block}.cookie{display:block}.cookie .btn{width:100%;margin:12px 0 0}.nav-links a:nth-child(3),.nav-links a:nth-child(4){display:none}}
     @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
     @media print{.utility-nav,.hero,.trust,.ad-wrap,.download-row,.cookie,.tools-grid,.footer{display:none!important}.section{padding:20px 0}.calc-tabs,.calc-panel:not(.active),.info-grid,.link-grid,.tips,.faq,.legal{display:none!important}.calc-shell{display:block}.calc-card{box-shadow:none;border:1px solid #999}.calc-body{grid-template-columns:1fr 1fr}.form-side{display:none}.result-side{background:#fff;color:#000}.result-side *{color:#000!important}}
+
+    /* ===== Glassmorphism override — SCREEN ONLY. Everything lives inside @media screen so the @media print rules above stay exactly as they were and print output (black on white) can never be touched by the glass theme. ===== */
+    @media screen{
+      :root,:root[data-theme="light"],:root[data-theme="dark"]{color-scheme:dark;--bg:#030b1d;--surface:rgba(255,255,255,.08);--surface-2:rgba(255,255,255,.13);--text:#f2f7f5;--muted:rgba(235,245,240,.65);--line:rgba(255,255,255,.18);--blue:#65aafc;--blue-2:#8fc1ff;--orange:#ff9a4b;--orange-soft:rgba(255,154,75,.16);--green:#70d9b9;--danger:#ff9b90;--shadow:0 18px 40px rgba(0,0,0,.35)}
+      html{background:#030b1d}
+      body{background:#030b1d}
+      .glass-bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:linear-gradient(155deg,#030b1d 0%,#071c3f 48%,#0a2a5e 100%)}
+      .glass-bg:before{content:"";position:absolute;width:560px;height:560px;left:-160px;top:-180px;border-radius:50%;background:radial-gradient(circle,#0b63ce 0%,transparent 65%);filter:blur(70px);opacity:.55;animation:glassDrift 26s ease-in-out infinite alternate}
+      .glass-bg:after{content:"";position:absolute;width:520px;height:520px;right:-150px;bottom:-190px;border-radius:50%;background:radial-gradient(circle,#7a5af8 0%,transparent 65%);filter:blur(80px);opacity:.3;animation:glassDrift 32s ease-in-out infinite alternate-reverse}
+      @keyframes glassDrift{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,40px) scale(1.12)}}
+      .utility-nav{backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%)}
+      .trust-grid,.calc-card{box-shadow:0 18px 40px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.22);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%)}
+      .calc-tabs,.cookie,.hero-meter{backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%)}
+      .calc-tab.active{background:linear-gradient(135deg,#0b63ce,#168bd3);color:#fff}
+      .payment-guide{background:linear-gradient(110deg,#084c9e,#0b63ce)}
+      select option{color:#102039;background:#fff}
+    }
   </style>
   <meta property="og:site_name" content="BillHub">
 </head>
 <body>
+  <div class="glass-bg" aria-hidden="true"></div>
   <nav class="utility-nav" aria-label="Primary navigation"><div class="wrap nav-inner"><div class="nav-links"><a href="#calculators">Calculators</a><a href="#official">Official links</a><a href="#guides">Bill guides</a><a href="#tips">Saving tips</a><a href="#faq">FAQ</a></div><button class="theme-btn" id="themeBtn" aria-label="Toggle light and dark mode" title="Toggle theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg></button></div></nav>
 
   <header class="hero"><div class="wrap hero-grid"><div><h1>Know what your usage may cost.</h1><p>Estimate electricity and gas charges, see every component clearly, and continue to the right official portal—without signing in or saving your data.</p><div class="hero-actions"><a class="btn btn-primary" href="#calculators">Start an estimate <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></a><a class="btn btn-secondary" href="#official">Check an official bill</a></div></div><div class="hero-meter" aria-hidden="true"><div class="meter-ring"><strong>63%</strong><span>usage review</span></div><p>A clear estimate makes it easier to spot unusual charges before payment.</p></div></div></header>
